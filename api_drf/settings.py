@@ -10,7 +10,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'api.User'
+AUTH_USER_MODEL = 'user.User'
 
 # JWT Configuration
 REST_FRAMEWORK = {
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api.apps.ApiConfig',
+    'user.apps.ApiConfig',
     'products.apps.ProductsConfig',
 ]
 
@@ -87,8 +87,12 @@ WSGI_APPLICATION = 'api_drf.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
