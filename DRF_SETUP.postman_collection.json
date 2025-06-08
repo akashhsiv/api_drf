@@ -7,61 +7,207 @@
 	},
 	"item": [
 		{
-			"name": "Authentication",
+			"name": "USER_MODULE",
 			"item": [
 				{
-					"name": "REGISTER",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "LOGIN",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "LOGOUT",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "FORGET_PASSWORD",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "RESET_PASSWORD",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Products",
-			"item": [
-				{
-					"name": "Attributes",
+					"name": "AUTH",
 					"item": [
 						{
-							"name": "CREATE",
+							"name": "LOGOUT",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesstoken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0OTM3NjQ5OCwiaWF0IjoxNzQ5MjkwMDk4LCJqdGkiOiIwM2YxNmQ1MDVmMDQ0ZjY0OGQwNzE0ZDE0NDExNmZhMiIsInVzZXJfaWQiOjJ9.881BIXqQoMANRaAZbKIQFVnd4x2HDrJqYODsPSVCs8M\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/customer/logout",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FORGET_PASSWORD",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesstoken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"john@example.com\"\r\n}"
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/customer/forget_password",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"forget_password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Auth_Token",
 							"request": {
 								"method": "GET",
 								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "RESET_PASSWORD",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CUSTOMER",
+					"item": [
+						{
+							"name": "REGISTER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john@example.com\",\r\n    \"password\": \"securepassword123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/customer/register",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LOGIN",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"email\": \"test@example.com\",\r\n    \"password\": \"securepassword123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "USER",
+					"item": [
+						{
+							"name": "REGISTER",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "LOGIN",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"email\": \"test@example.com\",\r\n    \"password\": \"securepassword123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
 							},
 							"response": []
 						}
@@ -101,6 +247,11 @@
 		{
 			"key": "accesstoken",
 			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0ODU0MDk4NiwiaWF0IjoxNzQ4NDU0NTg2LCJqdGkiOiJlMjk1NmYwNGQzNmM0MDVjYTY4Yzk4ODg0YzM0M2Q5MiIsInVzZXJfaWQiOjF9.iAmD0PMTUyrK-AMhvEXmFA3zTWTUyLfjcLjQCncVNL4",
+			"type": "string"
+		},
+		{
+			"key": "accessTokenForAdmin",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5MzgxMTY1LCJpYXQiOjE3NDkzNzc1NjUsImp0aSI6IjIwZTM4NTgzZDYxODRhNmI5OGY5NWZkYWZjOTNiZjRjIiwidXNlcl9pZCI6M30.GIfCcnoJYvGJfniXy1jM3U9Pc8fhpzCFFpfB6OiREqU",
 			"type": "string"
 		}
 	]
