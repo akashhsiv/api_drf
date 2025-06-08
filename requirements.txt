@@ -1,27 +1,9 @@
-class Attribute(models.Model):
-    name = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, blank=True)
-    description = models.TextField()
-    values = models.JSONField(default=list)
-    status = models.CharField(max_length=20, choices=[
-        ('pending', 'Pending'),
-        ('published', 'Published'),
-        ('draft', 'Draft')
-    ], default='draft')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.nameclass AttributeSerializer(serializers.ModelSerializer):
-            class Meta:
-                model = Attribute
-                fields = ['id', 'name', 'slug', 'description', 'values', 'status']
-                read_only_fields = ['slug']Django>=5.0.0
+Django>=5.0.0
 djangorestframework>=3.14.0
 python-dotenv>=1.0.0
 djangorestframework-simplejwt>=5.2.2
+drf-yasg>=1.21.7
+psycopg2-binary>=2.9.9
+Pillow>=10.0.0
+drf-nested-routers>=0.93.4
+django-cors-headers>=4.3.0
