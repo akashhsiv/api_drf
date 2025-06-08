@@ -240,7 +240,7 @@ Get a new access token using a valid refresh token.
 
 Create a new staff user. Requires authentication and appropriate permissions based on role hierarchy.
 
-**Endpoint**: `POST /api/staff/register/`
+**Endpoint**: `POST /api/user/register/`
 
 **Headers**:
 ```
@@ -280,7 +280,7 @@ Authorization: Bearer <access_token>
 
 List all staff users. Accessible by admin and manager users.
 
-**Endpoint**: `GET /api/staff/`
+**Endpoint**: `GET /api/user/`
 
 **Headers**:
 ```
@@ -329,7 +329,7 @@ Authorization: Bearer <access_token>
 
 Retrieve, update, or delete a staff user. Accessible by admin and manager users.
 
-**Endpoint**: `GET|PUT|PATCH|DELETE /api/staff/{id}/`
+**Endpoint**: `GET|PUT|PATCH|DELETE /api/user/{id}/`
 
 **Headers**:
 ```
@@ -363,7 +363,7 @@ Content-Type: application/json
 
 List all available roles that the current user can assign.
 
-**Endpoint**: `GET /api/staff/roles/`
+**Endpoint**: `GET /api/user/roles/`
 
 **Headers**:
 ```
